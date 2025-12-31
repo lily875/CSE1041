@@ -1,0 +1,39 @@
+# Function to convert a number from any radix to decimal
+def to_decimal(number, radix):
+    digits = "0123456789ABCDEF"
+    number = number.upper()
+    decimal = 0
+    power = 0
+
+    for digit in reversed(number):
+        value = digits.index(digit)
+        decimal += value * (radix ** power)
+        power += 1
+
+    return decimal
+
+
+# Function to convert decimal to any radix using division method
+def from_decimal(decimal, radix):
+    digits = "0123456789ABCDEF"
+    result = ""
+
+    while decimal > 0:
+        remainder = decimal % radix
+        result = digits[remainder] + result
+        decimal //= radix
+
+    return result if result != "" else "0"
+
+
+# -------- Main Program --------
+number = input("Enter the number: ")
+radix = int(input("Enter the radix (base): "))
+
+decimal_value = to_decimal(number, radix)
+
+print("\nConverted Values:")
+print("Decimal      :", decimal_value)
+print("Binary       :", from_decimal(decimal_value, 2))
+print("Octal        :", from_decimal(decimal_value, 8))
+print("Hexadecimal  :", from_decimal(decimal_value, 16))
