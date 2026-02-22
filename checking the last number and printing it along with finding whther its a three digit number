@@ -1,0 +1,9 @@
+number=int(input("enter a number"))
+last_digit= number%10
+if number<1000 and number>99:
+    print(f"the given number is a three digit number and its last digit is {last_digit}")
+    
+else:
+    second_last= (number//10)%10
+    print(f"the given number is not a three digit number and its last digit is {second_last}")
+    
